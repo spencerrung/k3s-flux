@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: kube-prometheus-stack
-        namespace: monitoring
+        namespace: flux-system
       interval: 1m
   valuesFrom:
     - kind: ConfigMap
