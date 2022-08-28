@@ -749,8 +749,7 @@ grafana:
 
     ## Labels to be added to the Ingress
     ##
-    labels:
-      app.kubernetes.io/name: grafana
+    labels: {}
 
     ## Hostnames.
     ## Must be provided if Ingress is enable.
