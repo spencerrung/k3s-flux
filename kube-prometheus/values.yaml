@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 # need to fix this
-#kubectl patch ds monitoring-prometheus-node-exporter --type "json" -p '[{"op": "remove", "path" : "/spec/template/spec/containers/0/volumeMounts/2/mountPropagation"}]'
+# kubectl patch ds monitoring-prometheus-node-exporter --type "json" -p '[{"op": "remove", "path" : "/spec/template/spec/containers/0/volumeMounts/2/mountPropagation"}]'
 ## Provide a name in place of kube-prometheus-stack for `app:` labels
 ##
 nameOverride: ""
@@ -757,7 +757,7 @@ grafana:
     # hosts:
     #   - grafana.domain.com
     hosts:
-      - local.grafana.com
+      - grafana.home.lan
 
     ## Path for grafana ingress
     path: /
@@ -766,9 +766,9 @@ grafana:
     ## Secret must be manually created in the namespace
     ##
     tls:
-    - secretName: grafana-local-tls
+    - secretName: grafana-home-tls
       hosts:
-      - local.grafana.com
+      - grafana.home.lan
 
   sidecar:
     dashboards:
