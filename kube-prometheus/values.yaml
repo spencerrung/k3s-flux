@@ -1531,7 +1531,8 @@ nodeExporter:
 ##
 prometheus-node-exporter:
   namespaceOverride: ""
-  hostRootFsMount: false
+  hostRootFsMount:
+    enabled: false
   podLabels:
     ## Add the 'node-exporter' label to be used by serviceMonitor to match standard common usage in rules and grafana dashboards
     ##
