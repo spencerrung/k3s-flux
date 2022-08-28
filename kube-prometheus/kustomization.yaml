@@ -1,0 +1,10 @@
+namespace: monitoring
+
+configMapGenerator:
+  - name: monitoring-values
+    files:
+      - values.yaml=values.yaml
+
+resources:
+  - namespace.yaml
+  - helm-release.yaml
