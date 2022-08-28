@@ -1,7 +1,8 @@
 # Default values for kube-prometheus-stack.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
+# need to fix this
+#kubectl patch ds monitoring-prometheus-node-exporter --type "json" -p '[{"op": "remove", "path" : "/spec/template/spec/containers/0/volumeMounts/2/mountPropagation"}]'
 ## Provide a name in place of kube-prometheus-stack for `app:` labels
 ##
 nameOverride: ""
@@ -730,7 +731,7 @@ grafana:
   ingress:
     ## If true, Grafana Ingress will be created
     ##
-    enabled: false
+    enabled: true
 
     ## IngressClassName for Grafana Ingress.
     ## Should be provided if Ingress is enable.
@@ -739,20 +740,25 @@ grafana:
 
     ## Annotations for Grafana Ingress
     ##
-    annotations: {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+    annotations:
+      cert-manager.io/cluster-issuer: acme-prod
+      acme.cert-manager.io/http01-edit-in-place: "true"
+      nginx.ingress.kubernetes.io/limit-connections: '2'
+      nginx.ingress.kubernetes.io/limit-rpm: '60'
+      nginx.ingress.kubernetes.io/rewrite-target: /
 
     ## Labels to be added to the Ingress
     ##
-    labels: {}
+    labels:
+      app.kubernetes.io/name: grafana
 
     ## Hostnames.
     ## Must be provided if Ingress is enable.
     ##
     # hosts:
     #   - grafana.domain.com
-    hosts: []
+    hosts:
+      - local.grafana.com
 
     ## Path for grafana ingress
     path: /
@@ -760,10 +766,10 @@ grafana:
     ## TLS configuration for grafana Ingress
     ## Secret must be manually created in the namespace
     ##
-    tls: []
-    # - secretName: grafana-general-tls
-    #   hosts:
-    #   - grafana.example.com
+    tls:
+    - secretName: grafana-local-tls
+      hosts:
+      - local.grafana.com
 
   sidecar:
     dashboards:
