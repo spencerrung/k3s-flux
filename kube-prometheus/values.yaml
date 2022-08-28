@@ -757,7 +757,7 @@ grafana:
     # hosts:
     #   - grafana.domain.com
     hosts:
-      - grafana.home.io
+      - grafana.home.lan
 
     ## Path for grafana ingress
     path: /
@@ -766,9 +766,9 @@ grafana:
     ## Secret must be manually created in the namespace
     ##
     tls:
-    - secretName: grafana-io-tls
+    - secretName: grafana-lan-tls
       hosts:
-      - grafana.home.io
+      - grafana.home.lan
 
   sidecar:
     dashboards:
