@@ -701,6 +701,9 @@ alertmanager:
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 ##
 grafana:
+  env:
+    - name: allow_embedding
+      value: true
   enabled: true
   namespaceOverride: ""
 
