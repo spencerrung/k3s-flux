@@ -8,7 +8,7 @@ server:
   enabled: true
   image:
     repository: "hashicorp/vault"
-    # Overrides the default Image Pull Policy
+    # Override the default Image Pull Policy
     pullPolicy: IfNotPresent
   ingress:
     enabled: false
