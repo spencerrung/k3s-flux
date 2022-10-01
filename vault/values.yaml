@@ -23,7 +23,7 @@ server:
     storageClass: local-path
     accessMode: ReadWriteOnce
   ha:
-    enabled: false
+    enabled: true
     replicas: 3
 # Vault UI
 ui:
