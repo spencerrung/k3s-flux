@@ -1,0 +1,12 @@
+namespace: vault
+configMapGenerator:
+  - name: vault-values
+    files:
+      - values.yaml=values.yaml
+configurations:
+  - kustomizeconfig.yaml
+resources:
+  - namespace.yaml
+  - ingressroute.yaml
+  - certificate.yaml
+  - helm-release.yaml

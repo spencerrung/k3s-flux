@@ -1,0 +1,35 @@
+global:
+  enabled: true
+  # TLS for end-to-end encrypted transport
+  tlsDisable: true
+injector:
+  enabled: false
+server:
+  enabled: true
+  image:
+    repository: "hashicorp/vault"
+    # Overrides the default Image Pull Policy
+    pullPolicy: IfNotPresent
+  ingress:
+    enabled: false
+  authDelegator:
+    enabled: true
+  service:
+    enabled: true
+  dataStorage:
+    enabled: true
+    size: 10Gi
+    mountPath: "/vault/data"
+    storageClass: local-path
+    accessMode: ReadWriteOnce
+  ha:
+    enabled: false
+    replicas: 3
+# Vault UI
+ui:
+  enabled: true
+  publishNotReadyAddresses: true
+  activeVaultPodOnly: true
+  serviceType: "ClusterIP"
+  externalPort: 8200
+  targetPort: 8200
