@@ -701,9 +701,6 @@ alertmanager:
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 ##
 grafana:
-  # env:
-  #   - name: allow_embedding
-  #     value: true
   enabled: true
   namespaceOverride: ""
 
@@ -725,6 +722,12 @@ grafana:
   defaultDashboardsTimezone: utc
 
   adminPassword: prom-operator
+
+  grafana.ini:
+    security:
+      allow_embedding: true
+    auth.anonymous:
+      enabled: true
 
   rbac:
     ## If true, Grafana PSPs will be created
