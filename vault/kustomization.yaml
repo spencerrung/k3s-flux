@@ -7,6 +7,4 @@ configurations:
   - kustomizeconfig.yaml
 resources:
   - namespace.yaml
-  - ingressroute.yaml
-  - certificate.yaml
   - helm-release.yaml
