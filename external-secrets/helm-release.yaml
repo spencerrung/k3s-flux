@@ -1,0 +1,42 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: eso
+  namespace: external-secrets
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: external-secrets
+      version: ">=0.5.8"
+      sourceRef:
+        kind: HelmRepository
+        name: external-secrets
+        namespace: flux-system
+      interval: 1m
+  valuesFrom:
+    - kind: ConfigMap
+      name: external-secrets-values
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              kind: ClusterRole
+              name: eso-external-secrets-controller
+            patch: |-
+              - op: add
+                path: /rules/0
+                value:
+                  apiGroups:
+                    - authentication.k8s.io
+                  resources:
+                    - tokenreviews
+                  verbs:
+                    - create
+                    - delete
+                    - get
+                    - list
