@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
-  repository: ghcr.io/external-secrets/external-secrets
-  tag: "v0.6.0-rc1.33.gad4bd386@sha256:e3e7b3b17b052c4767266211503aa9b8fe158e12479bdacf002eac6be71b1989"
+  repository: spencerrung/eso
+  tag: "v0.6.0"
 installCRDs: true
 crds:
   createClusterExternalSecret: true
@@ -17,8 +17,8 @@ serviceMonitor:
 webhook:
   create: true
   image:
-    repository: ghcr.io/external-secrets/external-secrets
-    tag: "v0.6.0-rc1.33.gad4bd386@sha256:e3e7b3b17b052c4767266211503aa9b8fe158e12479bdacf002eac6be71b1989"
+    repository: spencerrung/eso
+    tag: "v0.6.0"
   port: 10250
   rbac:
     create: true
@@ -27,8 +27,8 @@ webhook:
 certController:
   create: true
   image:
-    repository: ghcr.io/external-secrets/external-secrets
-    tag: "v0.6.0-rc1.33.gad4bd386@sha256:e3e7b3b17b052c4767266211503aa9b8fe158e12479bdacf002eac6be71b1989"
+    repository: spencerrung/eso
+    tag: "v0.6.0"
   rbac:
     create: true
   serviceAccount:
