@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: spencerrung/eso
-  tag: "v0.6.0-armv6"
+  tag: "v0.6.0-armv6-1"
 installCRDs: true
 crds:
   createClusterExternalSecret: true
@@ -18,7 +18,7 @@ webhook:
   create: true
   image:
     repository: spencerrung/eso
-    tag: "v0.6.0-armv6"
+    tag: "v0.6.0-armv6-1"
   port: 10250
   rbac:
     create: true
@@ -28,7 +28,7 @@ certController:
   create: true
   image:
     repository: spencerrung/eso
-    tag: "v0.6.0-armv6"
+    tag: "v0.6.0-armv6-1"
   rbac:
     create: true
   serviceAccount:
