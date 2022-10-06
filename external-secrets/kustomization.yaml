@@ -29,7 +29,7 @@ patches:
             - get
             - list
       - op: add
-        path: /rules/0
+        path: /rules/1
         value:
           apiGroups:
             - authorization.k8s.io
