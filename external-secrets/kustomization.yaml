@@ -13,18 +13,18 @@ resources:
 
 patches:
   - target:
-    kind: ClusterRole
-    name: eso-external-secrets-controller
-  patch: |-
-    - op: add
-      path: /rules/0
-      value:
-        apiGroups:
-          - authentication.k8s.io
-        resources:
-          - tokenreviews
-        verbs:
-          - create
-          - delete
-          - get
-          - list
+      kind: ClusterRole
+      name: eso-external-secrets-controller
+    patch: |-
+      - op: add
+        path: /rules/0
+        value:
+          apiGroups:
+            - authentication.k8s.io
+          resources:
+            - tokenreviews
+          verbs:
+            - create
+            - delete
+            - get
+            - list
