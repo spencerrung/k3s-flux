@@ -24,7 +24,7 @@ server:
     accessMode: ReadWriteOnce
   ha:
     enabled: true
-    replicas: 1
+    replicas: 3
     # Enables Vault's integrated Raft storage.  Unlike the typical HA modes where
     # Vault's persistence is external (such as Consul), enabling Raft mode will create
     # persistent volumes for Vault to store data according to the configuration under server.dataStorage.
