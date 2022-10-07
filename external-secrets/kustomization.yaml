@@ -30,3 +30,19 @@ patches:
             - delete
             - get
             - list
+            - update
+            - watch
+      - op: add
+        path: /rules/0
+        value:
+          apiGroups:
+            - authorization.k8s.io
+          resources:
+            - subjectaccessreviews
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - update
+            - watch

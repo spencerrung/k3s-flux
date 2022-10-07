@@ -9,6 +9,9 @@ rules:
   - tokenreviews
   verbs:
   - create
+  - get
+  - list
+  - watch
   - update
   - delete
 - apiGroups:
@@ -17,5 +20,8 @@ rules:
   - subjectaccessreviews
   verbs:
   - create
+  - get
+  - list
+  - watch
   - update
   - delete

@@ -10,5 +10,5 @@ roleRef:
   name: eso-auth
 subjects:
 - kind: ServiceAccount
-  name: external-secrets-cert-controller
+  name: eso-external-secrets
   namespace: external-secrets
