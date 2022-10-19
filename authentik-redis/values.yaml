@@ -1,4 +1,4 @@
 image:
   registry: docker.io
-  repository: arm32v7/redis
+  repository: redis
   tag: latest
