@@ -1,0 +1,10 @@
+namespace: authentik
+configMapGenerator:
+  - name: authentik-redis-values
+    files:
+      - values.yaml=values.yaml
+configurations:
+  - kustomizeconfig.yaml
+resources:
+  - namespace.yaml
+  - helm-release.yaml
