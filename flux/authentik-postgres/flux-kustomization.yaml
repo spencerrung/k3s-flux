@@ -4,7 +4,7 @@ metadata:
   name: authentik-postgres
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 5m
   path: ./authentik-postgres
   prune: true
   sourceRef:

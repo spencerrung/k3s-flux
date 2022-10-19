@@ -4,7 +4,7 @@ metadata:
   name: authentik-postgres
   namespace: flux-system
 spec:
-  interval: 30s
+  interval: 5m
   ref:
     branch: main
   secretRef:
