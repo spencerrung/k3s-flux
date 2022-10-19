@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: bitnami/postgresql
+      chart: bitnami/bitnami
       version: "11.9.5"
       sourceRef:
         kind: HelmRepository
