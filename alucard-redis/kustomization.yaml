@@ -1,6 +1,6 @@
-namespace: authentik
+namespace: alucard
 configMapGenerator:
-  - name: authentik-postgres-values
+  - name: alucard-redis-values
     files:
       - values.yaml=values.yaml
 configurations:
