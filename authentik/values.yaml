@@ -1,0 +1,19 @@
+# -- Server replicas
+replicas: 3
+worker:
+  replicas: 3
+authentik:
+  error_reporting:
+    enabled: true
+  postgresql:
+    host: http://alucard-postgres-postgresql.alucard:5432
+  redis:
+    host: http://alucard-redis-master.alucard:6379
+envFrom:
+  - secretRef:
+      name: authentik-secrets
+ingress:
+  enabled: false
+prometheus:
+  serviceMonitor:
+    create: true

@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: alucard-redis
+  namespace: flux-system
+spec:
+  interval: 5m
+  ref:
+    branch: main
+  secretRef:
+    name: flux-system
+  url: ssh://git@github.com/spencerrung/k3s-flux.git
