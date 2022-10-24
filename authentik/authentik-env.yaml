@@ -1,0 +1,15 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: authentik
+  namespace: external-secrets
+spec:
+  refreshInterval: "5m"
+  secretStoreRef:
+    name: vault
+    kind: ClusterSecretStore
+  target:
+    name: authentik
+  dataFrom:
+    - extract:
+        key: kv/authentik

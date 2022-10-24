@@ -5,13 +5,9 @@ worker:
 authentik:
   error_reporting:
     enabled: true
-  postgresql:
-    host: http://alucard-postgres-postgresql.alucard:5432
-  redis:
-    host: http://alucard-redis-master.alucard:6379
 envFrom:
   - secretRef:
-      name: authentik-secrets
+      name: authentik
 ingress:
   enabled: false
 prometheus:
