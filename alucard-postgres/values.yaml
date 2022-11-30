@@ -2,3 +2,6 @@ image:
   registry: docker.io
   repository: arm32v7/postgres
   tag: latest
+
+volumePermissions:
+  enabled: true
