@@ -1,4 +1,4 @@
 namespace: flux-system
 
 resources:
-  - https://github.com/fluxcd/flux2/blob/main/manifests/install/kustomization.yaml
+  - https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/install/kustomization.yaml
