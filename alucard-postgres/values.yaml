@@ -5,3 +5,8 @@ image:
 
 volumePermissions:
   enabled: true
+  image:
+    registry: docker.io
+    repository: spencerrung/bitnamishell
+    tag: arm32
+    pullPolicy: IfNotPresent

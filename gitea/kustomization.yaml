@@ -1,0 +1,13 @@
+namespace: gitea
+
+configMapGenerator:
+  - name: gitea-values
+    files:
+      - values.yaml=values.yaml
+
+configurations:
+  - kustomizeconfig.yaml
+
+resources:
+  - namespace.yaml
+  - helm-release.yaml

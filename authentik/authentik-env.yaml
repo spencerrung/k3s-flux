@@ -2,7 +2,7 @@ apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
   name: authentik
-  namespace: external-secrets
+  namespace: authentik
 spec:
   refreshInterval: "5m"
   secretStoreRef:

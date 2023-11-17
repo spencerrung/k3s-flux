@@ -1,0 +1,109 @@
+replicaCount: 1
+
+image:
+  repository: gitea/gitea
+  #tag: "1.17.0"
+  rootless: false # only possible when running 1.14 or later
+
+service:
+  http:
+    type: ClusterIP
+    port: 3000
+
+  ssh:
+    type: ClusterIP
+    port: 22
+
+ingress:
+  enabled: false
+
+persistence:
+  enabled: true
+  # existingClaim:
+  size: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  labels: {}
+  annotations: {}
+  storageClass: nfs
+
+#builtins
+postgresql:
+  enabled: false
+
+mysql:
+  enabled: false
+
+mariadb:
+  enabled: false
+
+memcached:
+  enabled: false
+  service:
+    port: 11211
+
+gitea:
+  admin:
+    existingSecret: gitea-admin-secret
+
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
+  # oauth:
+  #   - name: authentik
+  #     provider: openidConnect
+  #     existingSecret: gitea-oidc-secret
+  #     autoDiscoverUrl: https://authentik.alucard.dev/application/o/gitea/.well-known/openid-configuration
+
+  additionalConfigFromEnvs:
+    - name: ENV_TO_INI__DATABASE__TYPE
+      valueFrom:
+        secretKeyRef:
+          name: gitea-db-secret
+          key: db_type
+    - name: ENV_TO_INI__DATABASE__NAME
+      valueFrom:
+        secretKeyRef:
+          name: gitea-db-secret
+          key: name
+    - name: ENV_TO_INI__DATABASE__HOST
+      valueFrom:
+        secretKeyRef:
+          name: gitea-db-secret
+          key: host
+    - name: ENV_TO_INI__DATABASE__USER
+      valueFrom:
+        secretKeyRef:
+          name: gitea-db-secret
+          key: user
+    - name: ENV_TO_INI__DATABASE__PASSWD
+      valueFrom:
+        secretKeyRef:
+          name: gitea-db-secret
+          key: passwd
+
+  config:
+    server:
+      domain: git.alucard.dev
+      root_url: https://git.alucard.dev
+      ssh_domain: git.alucard.dev
+    cache:
+      ENABLED: true
+      ADAPTER: redis
+      HOST: 'redis://vine-redis.lab:6379/0?pool_size=100&idle_timeout=180s'
+    oauth2_client:
+      ENABLE_AUTO_REGISTRATION: true
+      ACCOUNT_LINKING: login
+      USERNAME: userid
+      OPENID_CONNECT_SCOPES:
+        - openid
+        - email
+        - profile
+    service:
+      DISABLE_REGISTRATION: true
+    APP_NAME: "Gitea"
+    RUN_MODE: prod
+    repository:
+      DISABLE_HTTP_GIT: true
