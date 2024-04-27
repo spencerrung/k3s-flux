@@ -1,0 +1,5 @@
+resources:
+  - dashboard
+  - pipelines
+  - results
+  - triggers
